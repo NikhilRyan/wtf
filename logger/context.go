@@ -10,7 +10,7 @@ import (
 // Add unique ID and logger to context
 func AddLoggerToContext(ctx context.Context) context.Context {
 	requestID := uuid.New().String()
-	ctx = context.WithValue(ctx, "logger", Logger)
+	ctx = context.WithValue(ctx, "logger", GetLogger())
 	ctx = context.WithValue(ctx, "requestID", requestID)
 	return ctx
 }

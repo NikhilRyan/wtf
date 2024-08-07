@@ -79,7 +79,7 @@ func exampleFunction3(ctx context.Context, param3 string, param4 int) (string, i
 
 func main() {
 	logger.InitLogger()
-	defer logger.Logger.Sync()
+	defer logger.GetLogger().Sync()
 
 	// Create a context and add the logger and unique request ID to it
 	ctx := context.Background()

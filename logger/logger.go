@@ -3,20 +3,34 @@ package logger
 import (
 	"context"
 	"fmt"
+	"sync"
 	"time"
 
 	"go.uber.org/zap"
 )
 
-var Logger *zap.Logger
+var (
+	Logger     *zap.Logger
+	initLogger sync.Once
+)
 
 // Initialize the logger
 func InitLogger() {
-	var err error
-	Logger, err = zap.NewProduction()
-	if err != nil {
-		panic(err)
+	initLogger.Do(func() {
+		var err error
+		Logger, err = zap.NewProduction()
+		if err != nil {
+			panic(err)
+		}
+	})
+}
+
+// GetLogger returns the initialized logger instance
+func GetLogger() *zap.Logger {
+	if Logger == nil {
+		InitLogger()
 	}
+	return Logger
 }
 
 // LogParams struct to encapsulate function parameters and results
