@@ -1,6 +1,6 @@
 What the Func (WTF) - Golang Context-based Structured Logging with Zap
 
-Description
+Description:
 What the Func (WTF) is a Golang logging library that provides context-based structured logging using Uber's Zap. WTF simplifies the process of logging function execution details, including parameters, results, errors, and panics. It automatically tracks and logs the entire lifecycle of a request with a unique request ID, ensuring comprehensive and correlated logs.
 
 Features:
